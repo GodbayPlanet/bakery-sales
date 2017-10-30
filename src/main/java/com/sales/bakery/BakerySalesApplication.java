@@ -1,12 +1,33 @@
 package com.sales.bakery;
 
+import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.sales.bakery.domain.Customer;
+import com.sales.bakery.services.CustomerService;
+
+@Slf4j
 @SpringBootApplication
-public class BakerySalesApplication {
+public class BakerySalesApplication implements CommandLineRunner {
+	
+	@Autowired
+	private CustomerService customerService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BakerySalesApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		List<Customer> customers = customerService.getAllCustomers();
+		
+		log.info("customers -> {}", customers);
 	}
 }
