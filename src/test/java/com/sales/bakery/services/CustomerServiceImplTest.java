@@ -28,9 +28,7 @@ import com.sales.bakery.repositories.CustomerRepository;
 public class CustomerServiceImplTest {
 
 	private static final int EXPECTED_SIZE_OF_LIST = 1;
-
 	private static final int NUMBER_OF_INVOCATIONS = 1;
-
 	private static final long CUSTOMER_ID = 5l;
 
 	@Mock
