@@ -28,7 +28,7 @@ public class Customer {
 	private String lastName;
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
-	private List<Recipe> recipes;
+	private List<Reciept> recipes;
 	
 	public Customer(Long id, String firstName, String lastName) {
 		this.id = id;

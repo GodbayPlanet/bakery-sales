@@ -18,11 +18,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Recipe {
+public class Reciept {
 
 	@Id
 	@GeneratedValue
-	private Long recipeNumber;
+	private Long recieptNumber;
 	
 	private String date;
 	

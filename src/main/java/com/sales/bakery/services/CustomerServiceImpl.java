@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Optional<Customer> customerOptional = customerRepository.findById(id);
 		
 		if (!customerOptional.isPresent()) {
-			throw new NotFoundException("Recipe Not Found. For ID value: "
+			throw new NotFoundException("Customer Not Found. For ID value: "
 					+ id.toString());
 		}
 		
