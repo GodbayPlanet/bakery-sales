@@ -48,7 +48,7 @@ public class ReadCustomer {
 	 * @param cells
 	 * @return
 	 */
-	private Customer createCustomer(String[] cells) {
+	public Customer createCustomer(String[] cells) {
 		Long id = Long.valueOf(cells[0]);
 		String lastName = cells[1].replaceAll("'", "");
 		String firstName = cells[2].replaceAll("'", "");

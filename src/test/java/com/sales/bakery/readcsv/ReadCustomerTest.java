@@ -1,6 +1,6 @@
 package com.sales.bakery.readcsv;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -14,6 +14,9 @@ import com.sales.bakery.domain.Customer;
 @RunWith(SpringRunner.class)
 public class ReadCustomerTest {
 
+	private static final int LIST_SIZE = 20;
+	private static final Long CUSTOMER_ID = 1L;
+	
 	ReadCustomer readCustomer;
 	
 	@Before
@@ -26,7 +29,17 @@ public class ReadCustomerTest {
 		
 		List<Customer> customers = readCustomer.getListOfCustomersFormCsvFile();
 		
-		assertEquals(20, customers.size());
+		assertEquals(LIST_SIZE, customers.size());
+	}
+	
+	@Test
+	public void testCreateCustomer() {
+		String[] cells = {"1", "Pero", "Peric"};
+		
+		Customer customer = readCustomer.createCustomer(cells);
+		
+		assertNotNull(customer);
+		assertEquals(CUSTOMER_ID, customer.getId());
 	}
 
 }
