@@ -1,5 +1,6 @@
 package com.sales.bakery;
 
+import java.util.Date;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,8 @@ public class BakerySalesApplication implements CommandLineRunner {
 		List<Customer> customers = customerService.getAllCustomers();
 
 		log.info("customers -> {}", customers);
+	
+		System.out.println(new Date());
 		
 //		List<Customer> customerss = ReadCustomer
 //				.getListOfCustomersFormCsvFile();
