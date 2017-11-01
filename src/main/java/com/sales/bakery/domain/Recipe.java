@@ -3,6 +3,8 @@ package com.sales.bakery.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +25,10 @@ public class Recipe {
 	private Long recipeNumber;
 	
 	private String date;
-	private Customer customerId;
+	
+	@OneToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 
 	
 }

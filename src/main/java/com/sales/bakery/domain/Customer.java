@@ -1,10 +1,13 @@
 package com.sales.bakery.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +17,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 public class Customer {
 
@@ -25,7 +27,11 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	
-	public Customer(String firstName, String lastName) {
+	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+	private List<Recipe> recipes;
+	
+	public Customer(Long id, String firstName, String lastName) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
