@@ -1,12 +1,15 @@
 package com.sales.bakery.services;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +27,8 @@ import com.sales.bakery.repositories.RecieptRepository;
 @SpringBootTest(classes = BakerySalesApplication.class)
 public class RecieptServiceImplTest {
 	
+	private static final long RECIEPT_NUMER = 10L;
+
 	private static final int NUMBER_OF_INVOCATIONS = 1;
 
 	private static final int EXPECTED_SIZE_OF_LIST = 1;
@@ -43,7 +48,7 @@ public class RecieptServiceImplTest {
 	public void testGetAllReciepts() {
 		Reciept reciept = new Reciept();
 		List<Reciept> receiptsData = new ArrayList<>();
-		reciept.setRecieptNumber(10L);
+		reciept.setRecieptNumber(RECIEPT_NUMER);
 		
 		receiptsData.add(reciept);
 		
@@ -56,4 +61,18 @@ public class RecieptServiceImplTest {
 		verify(recieptRepository, times(NUMBER_OF_INVOCATIONS)).findAll();
 	}
 
+	@Test
+	public void testGetByRecieptNumber() {
+		Reciept reciept = new Reciept();
+		reciept.setRecieptNumber(RECIEPT_NUMER);
+		
+		Optional<Reciept> recieptOptional = Optional.of(reciept);
+		
+		when(recieptRepository.findById(anyLong())).thenReturn(recieptOptional);
+		
+		Reciept recieptReturned = recieptService.getByRecieptNumber(RECIEPT_NUMER);
+		
+		assertNotNull(recieptReturned);
+		verify(recieptRepository, times(NUMBER_OF_INVOCATIONS)).findById(anyLong());
+	}
 }

@@ -1,6 +1,7 @@
 package com.sales.bakery.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -74,4 +75,5 @@ public class CustomerServiceImplTest {
 		assertNotNull(customerReturned);
 		verify(customerRepository, times(NUMBER_OF_INVOCATIONS)).findById(anyLong());
 	}
+	
 }
