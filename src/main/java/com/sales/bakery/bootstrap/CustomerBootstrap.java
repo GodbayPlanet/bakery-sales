@@ -19,14 +19,17 @@ public class CustomerBootstrap implements ApplicationListener<ContextRefreshedEv
 
 	private final CustomerRepository customerRepository;
 	
-	public CustomerBootstrap(CustomerRepository customerRepository) {
+	private ReadCustomer readCustomer;
+	
+	public CustomerBootstrap(CustomerRepository customerRepository, ReadCustomer readCustomer) {
 		this.customerRepository = customerRepository;
+		this.readCustomer = readCustomer;
 	}
 
 	@Override
 	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
-		List<Customer> customers = ReadCustomer.getListOfCustomersFormCsvFile();
+		List<Customer> customers = readCustomer.getListOfCustomersFormCsvFile();
 		customerRepository.saveAll(customers);
 		log.debug("Loading Bootstrap Data");
 	}

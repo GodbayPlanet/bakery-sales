@@ -8,8 +8,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.sales.bakery.domain.Customer;
 
+@Component
 public class ReadCustomer {
 
 	 private static final String FILE_NAME = "src/main/resources/csv/customers.csv";
@@ -19,7 +22,7 @@ public class ReadCustomer {
 	 * 
 	 * @return
 	 */
-	public static List<Customer> getListOfCustomersFormCsvFile() {
+	public List<Customer> getListOfCustomersFormCsvFile() {
 		List<Customer> customers = new ArrayList<>();
 
 		try (BufferedReader bufferedReader = Files.newBufferedReader(
@@ -45,7 +48,7 @@ public class ReadCustomer {
 	 * @param cells
 	 * @return
 	 */
-	private static Customer createCustomer(String[] cells) {
+	private Customer createCustomer(String[] cells) {
 		Long id = Long.valueOf(cells[0]);
 		String lastName = cells[1].replaceAll("'", "");
 		String firstName = cells[2].replaceAll("'", "");
