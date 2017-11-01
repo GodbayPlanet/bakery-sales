@@ -15,7 +15,7 @@ import com.sales.bakery.services.CustomerService;
 @Slf4j
 @SpringBootApplication
 public class BakerySalesApplication implements CommandLineRunner {
-	
+
 	@Autowired
 	private CustomerService customerService;
 
@@ -25,9 +25,19 @@ public class BakerySalesApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+
 		List<Customer> customers = customerService.getAllCustomers();
-		
+
 		log.info("customers -> {}", customers);
+		
+//		List<Customer> customerss = ReadCustomer
+//				.getListOfCustomersFormCsvFile();
+//
+//		customerss.forEach(customer -> System.out.println(customer));
+		
+//		insert into customer(id, last_name, first_name) values (21, "Vasic", "Nemanja");
+//		insert into customer(id, last_name, first_name) values (22, "Vasic", "Ognjen");
+//		insert into customer(id, last_name, first_name) values (23, "Vasic", "Ratko");
+
 	}
 }
