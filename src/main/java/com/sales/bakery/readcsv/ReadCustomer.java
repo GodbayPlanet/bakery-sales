@@ -12,7 +12,7 @@ import com.sales.bakery.domain.Customer;
 
 public class ReadCustomer {
 
-	 private static final String FILE_NAME = "src/main/resources/customers.csv";
+	 private static final String FILE_NAME = "src/main/resources/csv/customers.csv";
 
 	/**
 	 * Returns list of customers from file customers.csv.
