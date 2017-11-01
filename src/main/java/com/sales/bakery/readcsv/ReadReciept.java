@@ -52,7 +52,7 @@ public class ReadReciept {
 	 * @param cells
 	 * @return
 	 */
-	private Reciept createReciept(String[] cells) {
+	public Reciept createReciept(String[] cells) {
 		Long recieptNumber = Long.valueOf(cells[0]);
 		String date = cells[1].replaceAll("'", "");
 		Long customerId = Long.valueOf(cells[2]);
