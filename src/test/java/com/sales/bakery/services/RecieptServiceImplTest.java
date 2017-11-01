@@ -24,6 +24,10 @@ import com.sales.bakery.repositories.RecieptRepository;
 @SpringBootTest(classes = BakerySalesApplication.class)
 public class RecieptServiceImplTest {
 	
+	private static final int NUMBER_OF_INVOCATIONS = 1;
+
+	private static final int EXPECTED_SIZE_OF_LIST = 1;
+
 	@Mock
 	private RecieptRepository recieptRepository;
 	
@@ -38,16 +42,18 @@ public class RecieptServiceImplTest {
 	@Test
 	public void testGetAllReciepts() {
 		Reciept reciept = new Reciept();
-		List<Reciept> reciepts = new ArrayList<>();
+		List<Reciept> receiptsData = new ArrayList<>();
 		reciept.setRecieptNumber(10L);
 		
-		reciepts.add(reciept);
+		receiptsData.add(reciept);
 		
-		when(recieptRepository.findAll()).thenReturn(reciepts);
+		when(recieptRepository.findAll()).thenReturn(receiptsData);
 		
-		assertEquals(1, reciepts.size());
+		List<Reciept> receipts = recieptRepository.findAll();
 		
-		verify(recieptRepository, times(1)).findAll();
+		assertEquals(EXPECTED_SIZE_OF_LIST, receipts.size());
+		
+		verify(recieptRepository, times(NUMBER_OF_INVOCATIONS)).findAll();
 	}
 
 }
