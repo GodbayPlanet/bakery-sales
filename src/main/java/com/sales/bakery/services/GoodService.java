@@ -8,5 +8,5 @@ public interface GoodService {
 
 	List<Good> getAllGoods();
 
-	Good getByGoodId(Long id);
+	Good getByGoodId(String id);
 }

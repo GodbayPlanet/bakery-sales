@@ -3,10 +3,13 @@ package com.sales.bakery.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.sales.bakery.domain.Reciept;
 import com.sales.bakery.exceptions.NotFoundException;
 import com.sales.bakery.repositories.RecieptRepository;
 
+@Service
 public class RecieptServiceImpl implements RecieptService {
 	
 	private RecieptRepository recieptRepository;
