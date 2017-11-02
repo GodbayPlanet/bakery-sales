@@ -11,6 +11,7 @@ import com.sales.bakery.domain.Reciept;
 
 public class ReadRecieptTest {
 
+	private static final int EXPECTED_LIST_SIZE = 200;
 	private static final Long RECIEPT_NUMBER = 1L;
 	ReadReciept readReciept;
 
@@ -25,7 +26,7 @@ public class ReadRecieptTest {
 		List<Reciept> receipts = readReciept.getListOfReceiptsFromCsvFile();
 		
 		assertNotNull(receipts);
-		assertEquals(200, receipts.size());
+		assertEquals(EXPECTED_LIST_SIZE, receipts.size());
 	}
 	
 	@Test
