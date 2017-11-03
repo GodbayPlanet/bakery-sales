@@ -14,12 +14,18 @@ import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import com.sales.bakery.BakerySalesApplication;
 import com.sales.bakery.domain.Good;
 import com.sales.bakery.repositories.GoodRepository;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = BakerySalesApplication.class)
 public class GoodServiceImplTest {
 
 	private static final String GOOD_ID = "DK-04";
