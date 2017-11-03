@@ -5,7 +5,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +13,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Reciept {
 
 	@Id
@@ -25,6 +23,20 @@ public class Reciept {
 	@OneToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
+	
+	public Reciept(Long recieptNumber, String date, Customer customer) {
+		this.recieptNumber = recieptNumber;
+		this.date = date;
+		this.customer = customer;
+	}
+	
+	/**
+	 * This constructor is needed for creating Item object in ReadItem class.
+	 * @param recieptNumber
+	 */
+	public Reciept(Long recieptNumber) {
+		this.recieptNumber = recieptNumber;
+	}
 
 	@Override
 	public String toString() {

@@ -46,6 +46,7 @@ public class ReadGood {
 
 	/**
 	 * Method return new Good object from String arrays that contain data.
+	 * 
 	 * @param cells
 	 * @return
 	 */
@@ -54,7 +55,7 @@ public class ReadGood {
 		String flavor = cells[1].replaceAll("'", "");
 		String food = cells[2].replaceAll("'", "");
 		double price = Double.valueOf(cells[3]);
-		
+
 		return new Good(id, flavor, food, price);
 	}
 

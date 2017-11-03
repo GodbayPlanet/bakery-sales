@@ -10,8 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.sales.bakery.domain.Customer;
-import com.sales.bakery.domain.Reciept;
-import com.sales.bakery.readcsv.ReadReciept;
+import com.sales.bakery.domain.Item;
+import com.sales.bakery.readcsv.ReadItem;
 import com.sales.bakery.services.CustomerService;
 
 @Slf4j
@@ -31,6 +31,12 @@ public class BakerySalesApplication implements CommandLineRunner {
 		List<Customer> customers = customerService.getAllCustomers();
 
 		log.info("customers -> {}", customers);
+		
+		ReadItem readItem = new ReadItem();
+		
+		List<Item> items = readItem.getListOfItemsFromCsvFile();
+		
+		items.forEach(item -> System.out.println(item));
 		
 //		ReadReciept readReciept = new ReadReciept();
 //		
